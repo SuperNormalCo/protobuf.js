@@ -1,11 +1,14 @@
 {
-  "name": "protobufjs",
-  "version": "7.1.2",
+  "name": "@supernormalco/protobufjs",
+  "version": "7.1.3",
   "versionScheme": "~",
   "description": "Protocol Buffers for JavaScript (& TypeScript).",
   "author": "Daniel Wirtz <dcode+protobufjs@dcode.io>",
   "license": "BSD-3-Clause",
-  "repository": "protobufjs/protobuf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supernormalco/protobuf.js.git"
+  },
   "bugs": "https://github.com/protobufjs/protobuf.js/issues",
   "homepage": "https://protobufjs.github.io/protobuf.js/",
   "engines": {
