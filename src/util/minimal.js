@@ -13,9 +13,6 @@ util.EventEmitter = require("@protobufjs/eventemitter");
 // float handling accross browsers
 util.float = require("@protobufjs/float");
 
-// requires modules optionally and hides the call from bundlers
-util.inquire = require("@protobufjs/inquire");
-
 // converts to / from utf8 encoded strings
 util.utf8 = require("@protobufjs/utf8");
 
@@ -119,21 +116,6 @@ util.isSet = function isSet(obj, prop) {
  * @extends Uint8Array
  */
 
-/**
- * Node's Buffer class if available.
- * @type {Constructor<Buffer>}
- */
-util.Buffer = (function() {
-    try {
-        var Buffer = util.inquire("buffer").Buffer;
-        // refuse to use non-node buffers if not explicitly assigned (perf reasons):
-        return Buffer.prototype.utf8Write ? Buffer : /* istanbul ignore next */ null;
-    } catch (e) {
-        /* istanbul ignore next */
-        return null;
-    }
-})();
-
 // Internal alias of or polyfull for Buffer.from.
 util._Buffer_from = null;
 
@@ -172,14 +154,6 @@ util.Array = typeof Uint8Array !== "undefined" ? Uint8Array /* istanbul ignore n
  * @property {number} high High bits
  * @property {boolean} unsigned Whether unsigned or not
  */
-
-/**
- * Long.js's Long class if available.
- * @type {Constructor<Long>}
- */
-util.Long = /* istanbul ignore next */ util.global.dcodeIO && /* istanbul ignore next */ util.global.dcodeIO.Long
-         || /* istanbul ignore next */ util.global.Long
-         || util.inquire("long");
 
 /**
  * Regular expression used to verify 2 bit (`bool`) map keys.
